@@ -1,4 +1,5 @@
 from posixpath import split
+from types import new_class
 import pandas as pd
 import numpy as np
 
@@ -18,4 +19,14 @@ def sampling_strat(new_value_name):
           strat_test_set = housing.loc[test_index]
      print(strat_test_set[new_value_name].value_counts()/len(strat_test_set))
      #올바른 값을 추출하기 위한 income_cat은 각 훈련셋과 테스트셋에서 지워준다.
-     print('Removing %s' % new_value_name)
+     for set_ in (strat_train_set, strat_test_set):
+          set_.drop(new_value_name, axis=1, inplace=True)
+     # housing.drop(new_value_name,axis=1)
+     del housing[new_value_name]
+     is_remove = False
+     for i in list(strat_train_set):
+          if i != new_value_name:
+               is_remove = True
+     if is_remove:
+          print('Removing about "%s"' % new_value_name)
+     return [strat_train_set,strat_test_set]
