@@ -30,3 +30,6 @@ def sampling_strat(new_value_name):
      if is_remove:
           print('Removing about "%s"' % new_value_name)
      return [strat_train_set,strat_test_set]
+
+def creat_category(value:str,first:str,second:str):
+     housing[value] = housing[first] / housing[second]

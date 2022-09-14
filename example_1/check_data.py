@@ -91,8 +91,8 @@ def check_data():
                               print('It is not housing configuration')
                     elif graph_kind == '4':
                          while True:
-                              _x = input('Please input X')
-                              _y = input('Please input Y')
+                              _x = input('Please input X : ')
+                              _y = input('Please input Y : ')
                               if is_contain_value(category_value=_x) or is_contain_value(category_value=_y):
                                    plt.scatter(x=housing[_x],y=housing[_y],alpha=0.1)
                                    plt.show()
@@ -101,7 +101,7 @@ def check_data():
                                    print('it is not right value')
                     else:
                          print('It is not right.')
-
+                    break
           elif input_value == 'stratified':
                if is_refresh_data == 'y':
                     array_sample = sampling_strat(new_value_name=new_category_name)
@@ -125,7 +125,7 @@ def check_data():
                          print('it is not right value')
                     if user_corr == 'exit':
                          break
-
+          
           elif input_value == 'refresh':
                if is_refresh_data == 'y':
                     dividing(new_value_name=new_category_name,housing_ctg_name=housing_category_name)
