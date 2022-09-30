@@ -104,12 +104,14 @@ def check_data():
                     break
           elif input_value == 'stratified':
                if is_refresh_data == 'y':
-                    array_sample = sampling_strat(new_value_name=new_category_name)
-                    strat_train_set = array_sample[0]
-                    strat_test_set = array_sample[1]
-                    print('Using stratified train set') 
-                    housing = strat_train_set.copy()
-
+                    try:
+                         array_sample = sampling_strat(new_value_name=new_category_name)
+                         strat_train_set = array_sample[0]
+                         strat_test_set = array_sample[1]
+                         print('Using stratified train set') 
+                         housing = strat_train_set.copy()
+                    except:
+                         print("This function is unable.")
           elif input_value == 'correlation':
                corr_matrix = housing.corr()
                while True:

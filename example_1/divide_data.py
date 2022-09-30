@@ -2,8 +2,8 @@ from posixpath import split
 from types import new_class
 import pandas as pd
 import numpy as np
-
 from sklearn.model_selection import StratifiedShuffleSplit
+
 #    저장안하면 import 되지 않으니 저장 꼭 해야함
 from open_data import housing
 
@@ -13,8 +13,8 @@ def dividing(new_value_name,housing_ctg_name):
                               ,labels=[1,2,3,4,5])
 
 def sampling_strat(new_value_name):
-     split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
-     for train_index, test_index in split.split(housing, housing[new_value_name]):
+     splitTemp = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+     for train_index, test_index in splitTemp.split(housing, housing[new_value_name]):
           strat_train_set = housing.loc[train_index]
           strat_test_set = housing.loc[test_index]
      print(strat_test_set[new_value_name].value_counts()/len(strat_test_set))
